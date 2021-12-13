@@ -4,7 +4,7 @@
   "description": "Hello Koa 2 example with async",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "nodemon node src/app.js"
   },
   "keywords": [
     "koa",
@@ -15,7 +15,8 @@
   "dependencies": {
     "koa": "2.0.0",
     "koa-bodyparser": "3.2.0",
-    "koa-router": "7.0.0"
+    "koa-router": "7.0.0",
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
     "axios": "^0.24.0",

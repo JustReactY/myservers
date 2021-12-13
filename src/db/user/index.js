@@ -15,9 +15,9 @@ class Mongodb {
 
   }
 // 查询
-  query () {
+  query (obj) {
      return new Promise((resolve, reject) => {
-       MyModel.find({}, (err, res) => {
+       MyModel.find(obj, (err, res) => {
          if(err) {
            reject(err)
          }
