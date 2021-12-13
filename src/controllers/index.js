@@ -11,6 +11,15 @@ var fn_login = async (ctx, next) => {
 
 var fn_add = async (ctx, next) => {
     const { username, password } = ctx.request.body
+    let has = await ModelDb.query({username})
+    console.log(has)
+    if(has.length > 0) {
+        ctx.body = {
+            code: 1,
+            msg: '用户名已存在'
+        }
+        return
+    }
     let data = await ModelDb.save({
         username,
         password
