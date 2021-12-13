@@ -15,6 +15,7 @@
             align-items: center;
             justify-content: flex-start;
         }
+
         .btn {
             width: 100%;
             margin: 4px 0;
@@ -26,6 +27,8 @@
     <div class="box">
         <button type="button" id="fn_add" class="btn btn-primary btn-lg btn-block">新建用户</button>
         <button type="button" id="fn_login" class="btn btn-primary btn-lg btn-block">登录</button>
+
+        <input type="file" class="custom-file-input" id="fn_update">
     </div>
 
 
@@ -35,6 +38,7 @@
         (function () {
             const fn_add = document.querySelector('#fn_add')
             const fn_login = document.querySelector('#fn_login')
+            const fn_update = document.querySelector('#fn_update')
             fn_add.addEventListener('click', () => {
                 axios.post('http://127.0.0.1:3000/add_user', {
                     username: 'yyy',
@@ -49,6 +53,19 @@
                 axios.post('http://127.0.0.1:3000/login', {
                     username: 'yyy',
                     password: '000000'
+                }).then(res => {
+                    console.log(res.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+            })
+            fn_update.addEventListener('change', function () {
+                console.log(this.files)
+                const file = this.files[0]
+                let formData=new FormData();
+                formData.append('file',file)
+                axios.post('http://127.0.0.1:3000/update', formData, {
+                    'Content-Type':'multipart/form-data'
                 }).then(res => {
                     console.log(res.data)
                 }).catch(err => {
