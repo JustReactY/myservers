@@ -15,12 +15,9 @@ app.use(async (ctx, next) => {
 });
 
 
-
-
+app.use(bodyParser());
 // 使用middleware:
 app.use(controller());
-
-app.use(bodyParser());
 // add router middleware:
 app.use(router.routes());
 
