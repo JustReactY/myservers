@@ -1,22 +1,28 @@
 const api = require('./src/utils/request');
 
-// api.get('/hello/12').then(res => {
-//     console.log(res.data)
-// }).catch(err => {
-//     console.log('err')
-// })
 
-/* api.post('/signin', {
-    name: 'koa',
-    password: '12345'
-}).then(res => {
-    console.log(res.data)
-}).catch(err => {
-    console.log('err')
-}) */
+function addUser() {
+    api.post('/add_user', {
+        username: 'yyy',
+        password: '000000'
+    }).then(res => {
+        console.log(res.data)
+    }).catch(err => {
+        console.log(err)
+    })
+}
 
-api.get('/?aaa=1').then(res => {
-    console.log(res.data)
-}).catch(err => {
-    console.log('err')
-})
+function login() {
+    api.post('/login', {
+        username: 'yyy',
+        password: '000000'
+    }).then(res => {
+        console.log(res.data)
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+
+// addUser()
+login()

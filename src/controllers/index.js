@@ -1,18 +1,27 @@
-var fn_index = async (ctx, next) => {
-    console.log(ctx.query)
+const ModelDb = require('../db/user')
+
+var fn_login = async (ctx, next) => {
+    const { username, password } = ctx.request.body
+    let data = await ModelDb.query({username})
     ctx.body = {
-        code: 0
-    };
+        code: 0,
+        data
+    }
 };
 
-var fn_signin = async (ctx, next) => {
-    console.log(ctx.request.body)
+var fn_add = async (ctx, next) => {
+    const { username, password } = ctx.request.body
+    let data = await ModelDb.save({
+        username,
+        password
+    })
     ctx.body = {
-        code: 0
+        code: 0,
+        data
     }
 };
 
 module.exports = {
-    'GET /': fn_index,
-    'POST /signin': fn_signin
+    'POST /login': fn_login,
+    'POST /add_user': fn_add
 };
