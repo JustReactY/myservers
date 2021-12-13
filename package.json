@@ -4,7 +4,9 @@
   "description": "Hello Koa 2 example with async",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon node src/app.js"
+    "start": "npm run server & npm run sourse",
+    "server": "nodemon node src/app.js",
+    "sourse": "live-server"
   },
   "keywords": [
     "koa",
