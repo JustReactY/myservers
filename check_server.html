@@ -29,6 +29,18 @@
         <button type="button" id="fn_login" class="btn btn-primary btn-lg btn-block">登录</button>
 
         <input type="file" class="custom-file-input" id="fn_update">
+
+
+        <div class="form-group">
+            <label for="title">title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp"
+                placeholder="名称">
+        </div>
+        <div class="form-group">
+            <label for="tag">tag</label>
+            <input type="text" class="form-control" id="tag" placeholder="种类">
+        </div>
+        <button type="button" id="submit_pop" class="btn btn-primary">Submit</button>
     </div>
 
 
@@ -39,6 +51,9 @@
             const fn_add = document.querySelector('#fn_add')
             const fn_login = document.querySelector('#fn_login')
             const fn_update = document.querySelector('#fn_update')
+            const submit_pop = document.querySelector('#submit_pop')
+            const add_item_title = document.querySelector('#title')
+            const add_item_tag = document.querySelector('#tag')
             fn_add.addEventListener('click', () => {
                 axios.post('http://127.0.0.1:3000/add_user', {
                     username: 'yyy',
@@ -62,10 +77,22 @@
             fn_update.addEventListener('change', function () {
                 console.log(this.files)
                 const file = this.files[0]
-                let formData=new FormData();
-                formData.append('file',file)
+                let formData = new FormData();
+                formData.append('file', file)
                 axios.post('http://127.0.0.1:3000/update', formData, {
-                    'Content-Type':'multipart/form-data'
+                    'Content-Type': 'multipart/form-data'
+                }).then(res => {
+                    console.log(res.data)
+                }).catch(err => {
+                    console.log(err)
+                })
+            })
+            submit_pop.addEventListener('click', function () {
+                const title = add_item_title.value
+                const tag = add_item_tag.value
+                axios.post('http://127.0.0.1:3000/add_item', {
+                    title,
+                    tag 
                 }).then(res => {
                     console.log(res.data)
                 }).catch(err => {
