@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // 连接的数据库
-const DB_URL = 'mongodb://127.0.0.1:27017/lunch'
+const DB_URL = 'mongodb://admin:xiaotong.4421@127.0.0.1:27017/lunch?authSource=admin'
 
 mongoose.connect(DB_URL)
 
